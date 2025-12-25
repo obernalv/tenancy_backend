@@ -14,6 +14,12 @@ export class Warehouse extends AuditBase {
   @Column({ type: 'varchar', nullable: true })
   location?: string;
 
+  @Column({type: 'boolean'})
+  isMain!: boolean;
+
+  @Column({type: 'boolean'})
+  isActive!: boolean
+
   @OneToMany(() => Stock, stock => stock.warehouse)
   stock!: Stock[];
 

@@ -1,16 +1,5 @@
 export enum ReceiptStatus {
-    SIGNED      =   "SIGNED",
-    SENT        =   "SENT",
-    AUTHORIZED  =   "AUTHORIZED",
-    REJECTED    =   "REJECTED",
-    ANNULLED    =   "ANNULLED",
-    REICIVED    =   "REICIVED"
+    IN_PROCESS      =   "EN PROCESO",
+    NO_AUTHORIZED   =   "NO AUTORIZADO",
+    AUTHORIZED      =   "AUTORIZADO",
 }
-
-// Authorized
-// Pending
-// Rejected
-// Entered
-// Generated
-// Signed
-// Cancelled

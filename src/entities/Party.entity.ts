@@ -29,10 +29,10 @@ export class Party {
     companyName!: string;
 
     @Column({ type: 'varchar', length: 150, nullable: false })
-    address?: string;
+    address: string;
 
     @Column({ type: 'varchar', length: 100, nullable: false })
-    email?: string;
+    email: string;
 
     @Column({ type: 'varchar', length: 10, nullable: true })
     phoneNumber?: string;

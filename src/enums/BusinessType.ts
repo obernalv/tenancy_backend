@@ -1,0 +1,5 @@
+export enum BusinessType{
+    COMMERCE = "COMMERCE",
+    SERVICES = "SERVICES",
+    CONSTRUCTION = 'CONSTRUCTION'
+}

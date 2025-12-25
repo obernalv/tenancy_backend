@@ -121,6 +121,14 @@ export class Item extends AuditBase {
   @Column({type: 'boolean',})
   hasIva!: boolean;
 
+  // Lista ICE
+  @Column({ type: "decimal", precision: 9, scale: 2 })
+  ice?: number;
+
+  // Lista IRBPNR
+  @Column({ type: "decimal", precision: 9, scale: 2 })
+  irbpnr?: number
+
   @Column({
     type: "boolean",
     nullable: false,

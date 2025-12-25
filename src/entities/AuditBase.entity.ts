@@ -19,6 +19,7 @@ export abstract class AuditBase {
   @UpdateDateColumn({ name: "updated_at" })
   updatedAt!: Date;
 
+  // Soft-delete
   @DeleteDateColumn({ name: "deleted_at", nullable: true })
   deletedAt?: Date;
 

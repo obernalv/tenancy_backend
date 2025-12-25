@@ -3,7 +3,7 @@ import { DebitNote } from "./DebitNote.entity.js";
 import { Item } from "./Item.entity.js";
 
 
-@Entity({ name: "credit_note_detail" })
+@Entity({ name: "debit_note_detail" })
 export class DebitNoteDetail {
    @PrimaryGeneratedColumn("uuid")
   id!: number;

@@ -3,11 +3,11 @@ import {
   Column,
   Entity,
   JoinColumn,
-  ManyToOne,
   OneToMany,
   OneToOne,
   PrimaryGeneratedColumn
 } from "typeorm";
+import { BusinessType } from "../enums/BusinessType.js";
 import { SriEnvironment } from "../enums/SriEnvironment.js";
 import { Certificate } from "./Certificate.entity.js";
 import { Party } from "./Party.entity.js";
@@ -22,15 +22,17 @@ export class Tenant {
   @JoinColumn({ name: "party_id" })
   party: Party;
 
-  @ManyToOne(() => Certificate, (c) => c.tenants, { nullable: true })
-  @JoinColumn({ name: "certificate_id" })
-  certificate: Certificate | null;
+  @OneToMany(() => Certificate, (c) => c.tenant, { nullable: true })
+  certificates: [];
 
   @Column({ type: "text", nullable: true })
   logoUrl?: string | null;
 
   @Column({ type: "enum", enum: SriEnvironment, default: SriEnvironment.TESTING })
   sriEnvironment!: SriEnvironment;
+
+  @Column({ type: 'enum', enum: BusinessType })
+  businessType!: BusinessType
 
   @Column({ type: "boolean", default: true })
   isActive!: boolean;

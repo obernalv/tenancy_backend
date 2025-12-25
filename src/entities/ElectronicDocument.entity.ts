@@ -50,7 +50,7 @@ export class ElectronicDocument extends AuditBase {
   @Column({ type: "text", nullable: true })
   authorizedXml!: string;
 
-  @Column({ type: "enum", enum: ReceiptStatus, default: ReceiptStatus.SIGNED })
+  @Column({ type: "enum", enum: ReceiptStatus, default: ReceiptStatus.IN_PROCESS})
   status!: string;
 
   // Relaciones 1:1

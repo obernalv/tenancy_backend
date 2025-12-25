@@ -1,12 +1,14 @@
-import { Column, Entity, OneToMany } from "typeorm";
-import { AuditBase } from "./AuditBase.entity.js";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { RemissionGuide } from "./RemissionGuide.entity.js";
 import { StockMovement } from "./StockMovement.entity.js";
 
 
 
 @Entity({ name: "movement_reason" })
-export class MovementReason extends AuditBase{
+export class MovementReason {
+
+  @PrimaryGeneratedColumn("uuid")
+  id!: string;
 
   @Column({ type: "varchar", length: 3, unique: true })
   code!: string; // Ej: VEN, COM, DEV, TRA, SER, REC
@@ -30,17 +32,3 @@ export class MovementReason extends AuditBase{
   remissionGuide!: RemissionGuide[];
 
 }
-
-
-// info para seeder: 
-  
-  
-// export const movementReasonSeeds = [
-//   { code: "VEN", description: "Venta de bienes", isForGuia: true, isForKardex: true },
-//   { code: "COM", description: "Compra de bienes", isForGuia: true, isForKardex: true },
-//   { code: "DEV", description: "Devolución", isForGuia: true, isForKardex: true },
-//   { code: "TRA", description: "Traslado entre establecimientos", isForGuia: true, isForKardex: true },
-//   { code: "SER", description: "Prestación de servicios", isForGuia: true, isForKardex: true },
-//   { code: "REC", description: "Recojo de bienes transformados", isForGuia: true, isForKardex: true },
-//   { code: "AJU", description: "Ajuste de inventario", isForGuia: false, isForKardex: true },
-// ];

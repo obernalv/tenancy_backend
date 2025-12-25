@@ -1,13 +1,15 @@
-import { Column, Entity, OneToMany } from "typeorm";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { GlobalState } from '../enums/GlobalState.js';
-import { AuditBase } from "./AuditBase.entity.js";
 import { DebitNote } from "./DebitNote.entity.js";
 import { PurchasePayment } from "./PurchasePayment.entity.js";
 import { SalePayment } from "./SalePayment.entity.js";
 
 
 @Entity({name: "payment_method"})
-export class PaymentMethod extends AuditBase{
+export class PaymentMethod {
+
+  @PrimaryGeneratedColumn("uuid")
+  id!: string;
 
   @Column({
     type: "varchar",

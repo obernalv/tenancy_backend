@@ -2,7 +2,7 @@ import { Column, Entity, JoinColumn, ManyToOne, Relation } from 'typeorm';
 import { AuditBase } from './AuditBase.entity.js';
 import { Party } from './Party.entity.js';
 
-@Entity({name: "carrriers"})
+@Entity({name: "carriers"})
 export class Carrier extends AuditBase{
 
     @ManyToOne(() => Party, (party) => party.carriers)

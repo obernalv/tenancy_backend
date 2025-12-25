@@ -10,11 +10,11 @@ export class User {
   @PrimaryGeneratedColumn("uuid")
   id!: string;
 
-  @Column({ type: 'varchar', length: 150 })
-  email!: string;
+  @Column({type: "varchar", length: 50})
+  email!: string
 
   @Column({ type: 'varchar', length: 50 })
-  username!: string;
+  username?: string;
 
   @Column({ type: 'varchar', length: 200 })
   passwordHash!: string;
@@ -29,9 +29,9 @@ export class User {
   @Column({ type: "timestamptz", nullable: true })
   lastLogin?: Date | null;
 
-  @ManyToOne(() => Tenant, (tenant) => tenant.users)
-  @JoinColumn({name: "tenant_id"})
-  tenant: Relation<Tenant>
+  @ManyToOne(() => Tenant, (tenant) => tenant.users, { nullable: true })
+  @JoinColumn({ name: "tenant_id" })
+  tenant!: Relation<Tenant> | null;
 
   @Column({type: 'uuid'})
   tenant_id!: string 

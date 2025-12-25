@@ -1,7 +1,7 @@
 import { Column, Entity, JoinColumn, ManyToOne, OneToMany, OneToOne, Relation } from "typeorm";
 import { AuditBase } from "./AuditBase.entity.js";
 import { Supplier } from "./Supplier.entity.js";
-import { Tax } from "./Taxes.entity.js";
+import { TaxType } from "./TaxType.entity.js";
 import { WithholdingDetail } from "./WithholdingDetail.entity.js";
 
 
@@ -21,9 +21,9 @@ export class Withholding extends AuditBase {
     @Column({ type: "integer" })
     year!: number;
 
-    @OneToOne(() => Tax)
+    @OneToOne(() => TaxType)
     @JoinColumn({ name: "tax_id" })
-    tax?: Tax;
+    tax?: TaxType;
 
     @Column("decimal", { precision: 9, scale: 2, default: 0 })
     taxableBase!: number;

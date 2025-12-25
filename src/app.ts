@@ -2,9 +2,6 @@ import cors from 'cors';
 import express from 'express';
 import rateLimit from 'express-rate-limit';
 import helmet from 'helmet';
-
-// import hpp from "hpp";
-// import compression from 'compression';
 import morgan from 'morgan';
 
 const app = express();

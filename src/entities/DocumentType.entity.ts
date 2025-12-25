@@ -1,12 +1,12 @@
-import { Column, Entity, OneToMany } from "typeorm";
-import { AuditBase } from "./AuditBase.entity.js";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { ElectronicDocument } from "./ElectronicDocument.entity.js";
-import { Sequence } from "./Sequence.entity.js";
-
+import { TenantNumbering } from "./TenantNumbering.entity.js";
 
 @Entity({ name: "document_types" })
-export class DocumentType extends AuditBase{
+export class DocumentType {
 
+  @PrimaryGeneratedColumn("uuid")
+  id!: string;
 
   @Column({ type: "varchar", length: 2 })
   code!: string;
@@ -18,8 +18,8 @@ export class DocumentType extends AuditBase{
   @Column({ type: "boolean", default: false })
   withholdingApply!: boolean;
 
-  @OneToMany(() => Sequence, (sec) => sec.documentType)
-  sequence!: Sequence[];
+  @OneToMany(() => TenantNumbering, (sec) => sec.documentType)
+  numbering!: TenantNumbering[];
 
   @OneToMany(() => ElectronicDocument, (doc) => doc.documentType)
   documents!: ElectronicDocument[];

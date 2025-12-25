@@ -1,4 +1,5 @@
-import { Column, Entity, OneToMany } from 'typeorm';
+import { Column, Entity, JoinColumn, ManyToOne, Relation } from 'typeorm';
+import { CertificateP12State } from '../enums/CertificateP12State.js';
 import { AuditBase } from './AuditBase.entity.js';
 import { Tenant } from './Tenant.entity.js';
 
@@ -7,7 +8,7 @@ import { Tenant } from './Tenant.entity.js';
 export class Certificate extends AuditBase{
   
   @Column({ type: "text" })
-  fileName!: string;
+  fileName?: string;
 
   @Column({ type: "text" })
   fileKey!: string;
@@ -31,11 +32,16 @@ export class Certificate extends AuditBase{
   @Column({ type: "date", nullable: false })
   validTo?: Date | null;
 
-  @Column({ type: "enum", enum: ["ACTIVE", "EXPIRED", "REVOKED"], default: "ACTIVE" })
-  status!: "ACTIVE" | "EXPIRED" | "REVOKED";
+  @Column({
+    type: "enum",
+    enum: CertificateP12State,
+    default: CertificateP12State.ACTIVE
+  })
+  status!: CertificateP12State
 
 
-  @OneToMany(() => Tenant, (t) => t.certificate)
-  tenants!: Tenant[];
+  @ManyToOne(() => Tenant, (t) => t.certificates)
+  @JoinColumn({name: "tenant_id"})
+  tenant!: Relation<Tenant> ;
 
 }

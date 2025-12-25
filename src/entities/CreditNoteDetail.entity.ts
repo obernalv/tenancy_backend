@@ -15,7 +15,7 @@ export class CreditNoteDetail {
 
   @ManyToOne(() => Item, (item) => item.creditNoteDetails)
   @JoinColumn({ name: "item_id" })
-  item!: Item;
+  item!: Relation<Item>;
 
   @Column({ type: "decimal", precision: 9, scale: 4 })
   quantity!: string;

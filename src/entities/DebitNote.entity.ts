@@ -48,3 +48,25 @@ export class DebitNote extends AuditBase{
   details: DebitNoteDetail[];
 
 }
+
+/* 
+  Notas de Débito no usan motivos predefinidos.
+  Según el SRI: Una Nota de Débito se usa para:
+
+  incrementar valores de una factura,
+  por intereses,
+  recargos,
+  gastos imprevistos,
+  error en total previo,
+  reajustes,
+  comisiones, etc. 
+
+  EL MOTIVO SE EXPRESA EN EL DETALLE, NO EN CABECERA.(Factura electrónica)
+  <detalles>
+    <detalle>
+      <descripcion>Interés por mora</descripcion>
+      <valorTotal>5.00</valorTotal>
+    </detalle>
+  </detalles>
+
+*/
