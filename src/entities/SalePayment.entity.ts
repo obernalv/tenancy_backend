@@ -3,8 +3,6 @@ import { PaymentMethod } from "./PaymentMethod.entity.js";
 import { Sale } from "./Sale.entity.js";
 
 
-
-
 @Entity({name: "sale_payments"})
 export class SalePayment {
   

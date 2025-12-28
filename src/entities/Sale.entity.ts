@@ -12,12 +12,14 @@ import { SalePayment } from "./SalePayment.entity.js";
 @Entity({ name: "sales" })
 export class Sale extends AuditBase {
   @Column({
+    name: "document_number",
     type: "varchar",
     length: 20,
   })
   documentNumber!: string;
 
   @Column({
+    name: "total_price",
     type: "decimal",
     scale: 9,
     precision: 4,
@@ -26,6 +28,7 @@ export class Sale extends AuditBase {
   totalPrice!: number;
 
   @Column({
+    name: "total_zero",
     type: "decimal",
     scale: 9,
     precision: 4,
@@ -50,13 +53,15 @@ export class Sale extends AuditBase {
   observations?: number;
 
   @Column({
+    name: "guide_number",
     type: "varchar",
     scale: 20,
     nullable: true,
   })
-  guiaNumber?: string;
+  guideNumber?: string;
 
   @Column({
+    name: "sale_date",
     type: "date",
     nullable: false,
   })

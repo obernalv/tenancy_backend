@@ -13,8 +13,8 @@ import { Purchase } from "./Purchase.entity.js";
 @Entity({ name: "purchase_detail" })
 export class PurchaseDetail{
 
-   @PrimaryGeneratedColumn("uuid")
-  id!: number;
+  @PrimaryGeneratedColumn("uuid")
+  id!: string;
 
   @ManyToOne(() => Purchase, purchase => purchase.purchase_detail, {
     onDelete: "CASCADE",

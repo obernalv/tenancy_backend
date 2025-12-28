@@ -8,7 +8,7 @@ export class Role {
   @PrimaryGeneratedColumn("uuid")
   id!: string;
 
-  @Column({ type: 'varchar', length: 100 })
+  @Column({name: "role_name", type: 'varchar', length: 100 })
   roleName!: string;
 
   @Column({ type:'varchar', nullable: true })

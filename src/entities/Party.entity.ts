@@ -19,13 +19,13 @@ export class Party {
     // @JoinColumn({ name: "identification_type_id" })
     identificationType: IdentificationType;
 
-    @Column({ type: 'varchar', length: 13 })
+    @Column({name: "identification_number", type: 'varchar', length: 13 })
     identificationNumber!: string;
 
-    @Column({ type: 'varchar', length: 250 })
+    @Column({ name: "trade_name", type: 'varchar', length: 250 })
     tradeName!: string;
 
-    @Column({ type: 'varchar', length: 250 })
+    @Column({ name: "company_name", type: 'varchar', length: 250 })
     companyName!: string;
 
     @Column({ type: 'varchar', length: 150, nullable: false })
@@ -34,17 +34,17 @@ export class Party {
     @Column({ type: 'varchar', length: 100, nullable: false })
     email: string;
 
-    @Column({ type: 'varchar', length: 10, nullable: true })
+    @Column({ name: "phone_number", type: 'varchar', length: 10, nullable: true })
     phoneNumber?: string;
 
-    @Column({ type: 'boolean', default: false })
-    accounting_obliged!: boolean;
+    @Column({ name: "accounting_obliged", type: 'boolean', default: false })
+    accountingObliged!: boolean;
 
-    @Column({ type: 'boolean', default: false })
-    special_contributor!: boolean
+    @Column({ name: "special_contributor", type: 'boolean', default: false })
+    specialContributor!: boolean
 
-    @Column({ type: 'varchar', length: 20, nullable: true })
-    special_code?: string;
+    @Column({ name: "special_code", type: 'varchar', length: 20, nullable: true })
+    specialCode?: string;
 
     // Relación con Carrier
     @OneToMany(() => Carrier, (carrier) => carrier.party)

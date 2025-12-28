@@ -26,6 +26,7 @@ export class SaleDetail {
     quantity!: number
 
     @Column({
+        name: "unit_price",
         type: "decimal",
         precision: 9,
         scale: 4

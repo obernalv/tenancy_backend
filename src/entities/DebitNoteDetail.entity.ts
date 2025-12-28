@@ -21,6 +21,7 @@ export class DebitNoteDetail {
   quantity!: number;
 
   @Column({
+    name: "unit_price",
     type: "decimal",
   })
   unitPrice!: number;
@@ -43,7 +44,7 @@ export class DebitNoteDetail {
   @JoinColumn({ name: "debit_note_id" })
   debitNote: Relation<DebitNote>;
 
-  @ManyToOne(() => Item, (item) => item.debitNotesDetail)
+  @ManyToOne(() => Item, (item) => item.debitNoteDetail)
   @JoinColumn({ name: "item_id" })
   item: Relation<Item>;
 }

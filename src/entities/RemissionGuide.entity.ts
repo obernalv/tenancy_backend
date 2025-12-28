@@ -18,17 +18,17 @@ import { Warehouse } from "./WareHouse.entity.js";
 
 @Entity({ name: "remission_guides" })
 export class RemissionGuide extends AuditBase {
-  @Column({ type: "date", nullable: false })
+  @Column({name: "issue_date", type: "date", nullable: false })
   issueDate!: Date;
 
   @OneToOne(() => Sale, { nullable: true })
   @JoinColumn({ name: "sale_id" })
   sale: Relation<Sale>;
 
-  @Column({ type: "varchar", length: 17 })
+  @Column({ name: "invoice_number", type: "varchar", length: 17 })
   invoiceNumber?: string;
 
-  @Column({ type: "varchar", length: 49 })
+  @Column({ name: "authorization_number", type: "varchar", length: 49 })
   authorizationNumber!: string;
 
   @OneToOne(() => Purchase, { nullable: true })
@@ -53,7 +53,7 @@ export class RemissionGuide extends AuditBase {
   warehouse: Relation<Warehouse>;
 
   // punto de llegada
-  @Column({type: "varchar", length: 255})
+  @Column({name: "arrival_point", type: "varchar", length: 255})
   arrivalPoint!: string;
 
   // motivos de traslado
@@ -62,23 +62,23 @@ export class RemissionGuide extends AuditBase {
   movementReason!: MovementReason;
 
   // fecha de salida
-  @Column({ type: "date" })
+  @Column({ name: "departure_date", type: "date" })
   departureDate!: Date;
 
   // fecha de llegada
-  @Column({ type: "date" })
+  @Column({ name: "arrival_date", type: "date" })
   arrivalDate!: Date;
 
   // codigoEstablecimientoDestino
-  @Column({ type: "varchar", length: 3 })
+  @Column({ name: "destination_establishment_code", type: "varchar", length: 3 })
   destinationEstablishmentCode?: string
 
   // codigoAduanero
-  @Column({ type: "varchar", length: 20 })
+  @Column({ name: "customs_code", type: "varchar", length: 20 })
   customsCode?: string
 
   // codigoSucursal
-  @Column({ type: "varchar", length: 3 })
+  @Column({ name: "branch_code", type: "varchar", length: 3 })
   branchCode?: string
 
 }

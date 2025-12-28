@@ -12,7 +12,7 @@ export class WithholdingType {
   @Column({ type: "varchar", length: 100 })
   description!: string;
 
-  @Column({ type: "boolean" })
+  @Column({ name: "is_active", type: "boolean" })
   isActive!: boolean;
 
   @OneToMany(() => WithholdingTypeDetail, (detail) => detail.withholdingType)

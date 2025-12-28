@@ -23,10 +23,10 @@ export class CreditNoteDetail {
   @Column({ type: "varchar", length: 300 })
   description?: string;
 
-  @Column({ type: "decimal", precision: 9, scale: 4 })
+  @Column({ name: "unit_price", type: "decimal", precision: 9, scale: 4 })
   unitPrice!: number;
 
-  @Column({ type: "decimal", precision: 9, scale: 4 })
+  @Column({  type: "decimal", precision: 9, scale: 4 })
   discount!: string;
 
   @Column({

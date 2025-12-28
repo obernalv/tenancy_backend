@@ -15,7 +15,7 @@ export class PurchaseLiquidationDetail {
     (purchaseLiquidation) => purchaseLiquidation
   )
     @JoinColumn({ name: "purchase_liquidation_id" })
-  purchaseLiquidation: Relation<PurchaseLiquidation>;
+  purchase_liquidation: Relation<PurchaseLiquidation>;
 
   @ManyToOne(() => Item, (item) => item)
   @JoinColumn({ name: "item_id" })
@@ -30,6 +30,7 @@ export class PurchaseLiquidationDetail {
   quantity!: number;
 
   @Column({
+    name: "unit_price",
     type: "decimal",
     precision: 9,
     scale: 4,

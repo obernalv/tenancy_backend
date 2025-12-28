@@ -5,7 +5,7 @@ import {
   OneToMany,
   PrimaryGeneratedColumn,
 } from "typeorm";
-import { EmissionPoint } from "./TenantEmissionPoint.entity.js";
+import { TenantEmissionPoint } from "./TenantEmissionPoint.entity.js";
 
 
 @Entity({ name: "tenant_establishments" })
@@ -24,9 +24,9 @@ export class TenantEstablishment {
   @Column({ type: "varchar", length: 150 })
   name!: string;
 
-  @Column({ type: "boolean", default: true })
+  @Column({ name: "is_active", type: "boolean", default: true })
   isActive!: boolean;
 
-  @OneToMany(() => EmissionPoint, (ep) => ep.establishment)
-  emissionPoints!: EmissionPoint[];
+  @OneToMany(() => TenantEmissionPoint, (ep) => ep.establishment)
+  emissionPoints!: TenantEmissionPoint[];
 }

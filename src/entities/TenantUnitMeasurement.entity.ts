@@ -23,7 +23,7 @@ export class TenantUnitMeasurement {
   @JoinColumn({ name: "unit_measurement_id" })
   unitMeasurement!: UnitMeasurement;
 
-  @Column({ type: "boolean", default: true })
+  @Column({ name: "is_active", type: "boolean", default: true })
   isActive!: boolean;
 
   @CreateDateColumn({ name: "assigned_at" })

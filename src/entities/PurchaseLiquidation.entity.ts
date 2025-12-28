@@ -13,12 +13,14 @@ export class PurchaseLiquidation extends AuditBase {
   supplier: Relation<Supplier>;
 
   @Column({
+    name: "document_number",
     type: "varchar",
     length: 20,
   })
   documentNumber!: string;
 
   @Column({
+    name: "total_price",
     type: "decimal",
     scale: 9,
     precision: 4,
@@ -27,6 +29,7 @@ export class PurchaseLiquidation extends AuditBase {
   totalPrice!: number;
 
   @Column({
+    name: "total_zero",
     type: "decimal",
     scale: 9,
     precision: 4,
@@ -51,6 +54,7 @@ export class PurchaseLiquidation extends AuditBase {
   observations?: number;
 
   @Column({
+    name: "guia_number",
     type: "varchar",
     scale: 20,
     nullable: true,
@@ -58,6 +62,7 @@ export class PurchaseLiquidation extends AuditBase {
   guiaNumber?: string;
 
   @Column({
+    name: "sale_date",
     type: "date",
     nullable: false,
   })
@@ -73,9 +78,9 @@ export class PurchaseLiquidation extends AuditBase {
 
   @OneToMany(
     () => PurchaseLiquidationDetail,
-    (detail) => detail.purchaseLiquidation
+    (detail) => detail.purchase_liquidation
   )
-  purchaseLiquidationDetails: PurchaseLiquidationDetail[];
+  purchase_liquidation_details: PurchaseLiquidationDetail[];
 
   // Payment method
   @OneToMany(() => SalePayment, (sp) => sp.sale, { cascade: true })

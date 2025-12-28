@@ -25,16 +25,16 @@ export class Tenant {
   @OneToMany(() => Certificate, (c) => c.tenant, { nullable: true })
   certificates: [];
 
-  @Column({ type: "text", nullable: true })
+  @Column({ name: "logo_url", type: "text", nullable: true })
   logoUrl?: string | null;
 
-  @Column({ type: "enum", enum: SriEnvironment, default: SriEnvironment.TESTING })
+  @Column({ name: "sri_environment", type: "enum", enum: SriEnvironment, default: SriEnvironment.TESTING })
   sriEnvironment!: SriEnvironment;
 
-  @Column({ type: 'enum', enum: BusinessType })
+  @Column({ name: "business_type", type: 'enum', enum: BusinessType })
   businessType!: BusinessType
 
-  @Column({ type: "boolean", default: true })
+  @Column({ name: "is_active", type: "boolean", default: true })
   isActive!: boolean;
 
   // configuración por tenant (json para extender)

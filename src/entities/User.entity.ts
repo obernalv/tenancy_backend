@@ -13,20 +13,20 @@ export class User {
   @Column({type: "varchar", length: 50})
   email!: string
 
-  @Column({ type: 'varchar', length: 50 })
-  username?: string;
+  @Column({ name: "user_name", type: 'varchar', length: 50 })
+  userName?: string;
 
-  @Column({ type: 'varchar', length: 200 })
+  @Column({ name: "password_hash", type: 'varchar', length: 200 })
   passwordHash!: string;
 
-  @Column({ type: "boolean", default: true })
-  active!: boolean;
+  @Column({ name: "is_active", type: "boolean", default: true })
+  isActive!: boolean;
 
   @ManyToOne(() => Role ,(role) => role.users)
   @JoinColumn({ name: "role_id" })
   role: Role;
 
-  @Column({ type: "timestamptz", nullable: true })
+  @Column({ name: "last_login", type: "timestamptz", nullable: true })
   lastLogin?: Date | null;
 
   @ManyToOne(() => Tenant, (tenant) => tenant.users, { nullable: true })

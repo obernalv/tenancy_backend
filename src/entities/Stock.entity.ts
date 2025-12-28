@@ -6,8 +6,7 @@ import { Warehouse } from "./WareHouse.entity.js";
 
 @Entity({ name: "stock" })
 // indice compuesto para acelerar consultas
-// @Index(["tenant_id", "item_id", "warehouse_id"], { unique: false })
-@Index(["item_id", "warehouse_id"], { unique: false })
+@Index(["itemId", "warehouseId"], { unique: false })
 export class Stock extends AuditBase {
 
   @Column({ type: "decimal", precision: 9, scale: 4, default: 0 })
@@ -21,14 +20,14 @@ export class Stock extends AuditBase {
   item: Relation<Item>;
 
   // debe ser declarado de manera implicta por que usa index
-  @Column({ type: "uuid" })
-  item_id!: string;
+  @Column({ name: "item_id", type: "uuid" })
+  itemId!: string;
 
   @ManyToOne(() => Warehouse, (warehouse) => warehouse.stock)
   @JoinColumn({ name: "warehouse_id" })
   warehouse: Relation<Warehouse>;
 
   // debe ser declarado de manera implicta por que usa index
-  @Column({ type: "uuid" })
-  warehouse_id!: string;
+  @Column({ name: "warehouse_id", type: "uuid" })
+  warehouseId!: string;
 }

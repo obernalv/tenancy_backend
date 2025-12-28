@@ -8,7 +8,7 @@ import {
   Relation,
 } from "typeorm";
 import { DocumentType } from "./DocumentType.entity.js";
-import { EmissionPoint } from "./TenantEmissionPoint.entity.js";
+import { TenantEmissionPoint } from "./TenantEmissionPoint.entity.js";
 import { TenantEstablishment } from "./TenantEstablishment.entity.js";
 
 @Entity({ name: "tenant_numbering" })
@@ -24,17 +24,20 @@ export class TenantNumbering {
 
   @ManyToOne(() => TenantEstablishment)
   @JoinColumn({ name: "establishment_id" })
-  establishment!: TenantEstablishment;
+  establishment: TenantEstablishment;
 
-  @ManyToOne(() => EmissionPoint)
+  @ManyToOne(() => TenantEmissionPoint)
   @JoinColumn({ name: "emission_point_id" })
-  emissionPoint!: EmissionPoint;
+  emissionPoint: TenantEmissionPoint;
 
-  @Column({ type: "integer", default: 1 })
+  @Column({ name: "next_number", type: "integer", default: 1 })
   nextNumber!: number;
 
   @Column({ type: "varchar", length: 1, nullable: true })
   prefix?: string | null; // - este por default
+
+  @Column({ type: "integer" })
+  year!: number;
 
   // invoice, purchase, stock_entry, etc
   @ManyToOne(() => DocumentType, (dt) => dt.numbering)
