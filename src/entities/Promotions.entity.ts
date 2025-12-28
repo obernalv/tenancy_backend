@@ -22,19 +22,19 @@ export class Promotion extends AuditBase{
     discountType: 'percentage' | 'fixed_amount';
 
     // El valor del descuento. Si discountType es 'percentage', será un número entre 0 y 100. Si es 'fixed_amount', será la cantidad monetaria a descontar.
-    @Column({ type: 'decimal', precision: 9, scale: 4 })
+    @Column({name: 'discount_value', type: 'decimal', precision: 9, scale: 4 })
     discountValue: number;
 
     // Fecha y hora de inicio de la promoción.
-    @Column({ type: 'date' })
+    @Column({name: 'start_date', type: 'date' })
     startDate: Date;
 
     // Fecha y hora de finalización de la promoción.
-    @Column({ type: 'date' })
+    @Column({name: 'end_date', type: 'date' })
     endDate: Date;
 
     // Un flag para activar/desactivar la promoción manualmente, incluso si está dentro de su rango de fechas.
-    @Column({ type: 'boolean', default: true })
+    @Column({name: 'is_active', type: 'boolean', default: true })
     isActive: boolean;
 
     // Si la promoción requiere un código promocional (ej. "SUMMER20").
@@ -42,15 +42,15 @@ export class Promotion extends AuditBase{
     code?: string;
 
     // Cantidad mínima de compra requerida para aplicar la promoción.
-    @Column({ type: 'decimal', precision: 10, scale: 2, nullable: true })
+    @Column({name: 'minimum_purchase_amount', type: 'decimal', precision: 10, scale: 2, nullable: true })
     minimumPurchaseAmount: number;
 
     // Número máximo de veces que se puede aplicar esta promoción en total. 
-    @Column({ type: 'integer', nullable: true })
+    @Column({ name: 'usage_limit', type: 'integer', nullable: true })
     usageLimit?: number;
 
     // Número máximo de veces que un mismo usuario puede aplicar esta promoción.
-    @Column({ type: 'integer', nullable: true })
+    @Column({ name: 'per_user_limit', type: 'integer', nullable: true })
     perUserLimit?: number;
 
     @ManyToOne(() => Category, category => category.promotions, { nullable: true })

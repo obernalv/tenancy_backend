@@ -16,12 +16,14 @@ export class Purchase extends AuditBase{
   payments!: PurchasePayment[];
 
   @Column({
+    name: "document_nro",
     type: "varchar",
     length: 20,
   })
   documentNro!: string;
 
   @Column({
+    name: "total_price",
     type: "decimal",
     precision: 9,
     scale: 4
@@ -29,6 +31,7 @@ export class Purchase extends AuditBase{
   totalPrice!: number;
 
   @Column({
+    name: "total_zero",
     type: "decimal",
     precision: 9,
     scale: 4
@@ -50,6 +53,7 @@ export class Purchase extends AuditBase{
   observations?: string;
 
   @Column({
+    name: "guia_number",
     type: "varchar",
     length: 20,
   })
@@ -63,6 +67,7 @@ export class Purchase extends AuditBase{
   status!: GlobalState;
 
   @Column({
+    name: "purchase_date",
     type: "date",
   })
   purchaseDate!: Date | null;

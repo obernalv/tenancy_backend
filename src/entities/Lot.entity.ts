@@ -6,10 +6,10 @@ import { Item } from "./Item.entity.js";
 @Entity({name: "lots"})
 export class Lot extends AuditBase{
 
-  @Column({type: 'varchar', length: 50})
+  @Column({name: "lot_number", type: 'varchar', length: 50})
   lotNumber!: string;
 
-  @Column({ type: "date" })
+  @Column({name: "expiration_date", type: "date" })
   expirationDate!: Date;
 
   @Column({ type: "decimal", precision: 9, scale: 4})
@@ -20,6 +20,6 @@ export class Lot extends AuditBase{
   item: Relation<Item>;
 
   /** Código interno del proveedor o fábrica (opcional) */
-  @Column({ type: "varchar", nullable: true })
+  @Column({name: "manufacturer_code", type: "varchar", nullable: true })
   manufacturerCode?: string;
 }

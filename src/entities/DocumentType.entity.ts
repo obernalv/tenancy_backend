@@ -11,11 +11,11 @@ export class DocumentType {
   @Column({ type: "varchar", length: 2 })
   code!: string;
 
-  @Column({ type: "varchar",length: 100 })
+  @Column({ name: "document_name", type: "varchar", length: 100 })
   documentName!: string;
 
   // Indica si el tipo de documento aplica para retenciones
-  @Column({ type: "boolean", default: false })
+  @Column({ name: "withholding_apply", type: "boolean", default: false })
   withholdingApply!: boolean;
 
   @OneToMany(() => TenantNumbering, (sec) => sec.documentType)

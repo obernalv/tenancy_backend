@@ -64,7 +64,7 @@ export class InitialSystemSetupSeed implements Seeder {
       fileKey: "12345678",
       filePath: "/certs/empresa-principal.p12",
       encryptedP12: Buffer.from(""),
-      thumbprint: "",
+      thumbPrint: "",
       validFrom: new Date(),
       validTo: new Date(),
       status: CertificateP12State.ACTIVE,
@@ -95,9 +95,9 @@ export class InitialSystemSetupSeed implements Seeder {
 
     const superAdmin = userRepo.create({
       email: "sadmin@dominio.com",
-      username: "sadmin", // puedes cambiarlo
+      userName: "sadmin", // puedes cambiarlo
       passwordHash: hashed,
-      active: true,
+      isActive: true,
       role: roleSuperAdmin,
       tenant: mainTenant, // solo usuario global
     });

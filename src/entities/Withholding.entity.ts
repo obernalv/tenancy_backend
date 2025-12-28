@@ -25,13 +25,13 @@ export class Withholding extends AuditBase {
     @JoinColumn({ name: "tax_id" })
     tax?: TaxType;
 
-    @Column("decimal", { precision: 9, scale: 2, default: 0 })
+    @Column({ name: "taxable_base", type: "decimal", precision: 9, scale: 2, default: 0 })
     taxableBase!: number;
 
-    @Column("decimal", { precision: 9, scale: 2, default: 0 })
+    @Column({ type: "decimal", precision: 9, scale: 2, default: 0 })
     percentage!: number;
 
-    @Column("decimal", { precision: 9, scale: 2, default: 0 })
+    @Column({ name: "withholding_percentage", type: "decimal", precision: 9, scale: 2, default: 0 })
     withholdingPercentage!: number;
 
     @OneToMany(() => WithholdingDetail, (detail) => detail.withholding)

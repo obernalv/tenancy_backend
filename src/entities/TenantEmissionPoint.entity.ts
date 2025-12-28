@@ -13,7 +13,7 @@ import { TenantNumbering } from "./TenantNumbering.entity.js";
 
 @Entity({ name: "tenant_emission_points" })
 @Index(["establishment", "code"], { unique: true })
-export class EmissionPoint {
+export class TenantEmissionPoint {
   @PrimaryGeneratedColumn("uuid")
   id!: string;
 
@@ -22,9 +22,9 @@ export class EmissionPoint {
 
   @ManyToOne(() => TenantEstablishment, (est) => est.emissionPoints)
   @JoinColumn({ name: "establishment_id" })
-  establishment!: TenantEstablishment;
+  establishment: TenantEstablishment;
 
-  @Column({ type: "boolean", default: true })
+  @Column({ name: "is_active", type: "boolean", default: true })
   isActive!: boolean;
 
   @OneToMany(() => TenantNumbering, (n) => n.emissionPoint)

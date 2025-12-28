@@ -12,7 +12,7 @@ export class Customer extends AuditBase {
   @JoinColumn({ name: "party_id" })
   party!: Party;
 
-  @Column({ type: 'decimal', precision: 9, scale: 2, default: 0 })
+  @Column({ name: "credit_limit", type: 'decimal', precision: 9, scale: 2, default: 0 })
   creditLimit?: number;
 
   @OneToMany(() => Sale, (sales) => sales.customer)

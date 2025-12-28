@@ -65,7 +65,7 @@ export class Item extends AuditBase {
 
   // Sale detail
   @OneToMany(() => SaleDetail, sd => sd.item)
-  saleDetails!: []
+  sale_details!: []
 
   @OneToMany(() => RemissionGuideDetail, rgd => rgd.item)
   remissionGuideDetail!: RemissionGuideDetail[]
@@ -74,7 +74,7 @@ export class Item extends AuditBase {
   creditNoteDetails!: CreditNoteDetail[];
 
   @OneToMany(() => DebitNoteDetail, dnd => dnd.item)
-  debitNotesDetail!: DebitNoteDetail[];
+  debitNoteDetail!: DebitNoteDetail[];
 
   @OneToMany(() => PurchaseDetail, pd => pd.item)
   purchaseDetails!: PurchaseDetail[];
@@ -89,6 +89,7 @@ export class Item extends AuditBase {
   barcode!: string;
 
   @Column({
+    name: "item_name",
     type: "varchar",
     length: 150,
     nullable: false,
@@ -103,6 +104,7 @@ export class Item extends AuditBase {
   description?: string;
 
   @Column({
+    name: "unit_price",
     type: "decimal",
     precision: 9,
     scale: 4,
@@ -111,6 +113,7 @@ export class Item extends AuditBase {
   unitPrice!: number;
 
   @Column({
+    name: "sale_price",
     type: "decimal",
     precision: 9, //numeros enteros
     scale: 4, //decimales
@@ -118,7 +121,7 @@ export class Item extends AuditBase {
   })
   salePrice!: number;
 
-  @Column({type: 'boolean',})
+  @Column({name: "has_iva", type: 'boolean',})
   hasIva!: boolean;
 
   // Lista ICE
@@ -130,6 +133,7 @@ export class Item extends AuditBase {
   irbpnr?: number
 
   @Column({
+    name: "control_stock",
     type: "boolean",
     nullable: false,
     default: false

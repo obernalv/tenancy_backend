@@ -24,7 +24,7 @@ export class TenantTax {
   @JoinColumn({ name: "tax_id" })
   tax!: TaxType;
 
-  @Column({ type: "boolean", default: true })
+  @Column({ name: "is_active", type: "boolean", default: true })
   isActive!: boolean;
 
   @CreateDateColumn({ name: "created_at" })

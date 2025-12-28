@@ -9,13 +9,13 @@ import { Sale } from "./Sale.entity.js";
 @Entity({ name: "credit_notes" })
 export class CreditNote extends AuditBase {
 
-  @Column({ type: "date" })
+  @Column({ name: "issue_date", type: "date" })
   issueDate!: Date;
 
-  @Column({ type: "varchar", length: 17 })
+  @Column({ name: "invoice_number", type: "varchar", length: 17 })
   invoiceNumber!: string;
 
-  @Column({ type: "varchar", length: 2, default: "01" })
+  @Column({ name: "modified_document_type", type: "varchar", length: 2, default: "01" })
   modifiedDocumentType!: string; // Siempre factura
 
   // Puede tener una sola razon para generarla

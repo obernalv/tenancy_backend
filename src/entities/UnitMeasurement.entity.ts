@@ -19,13 +19,13 @@ export class UnitMeasurement {
   type!: UnitMeasurementType;
 
   // Si no tiene baseUnit, es base
-  @Column({ type: "boolean", default: false })
+  @Column({ name: "is_base", type: "boolean", default: false })
   isBase!: boolean;
 
   @Column({ type: "varchar", length: 10, nullable: true })
   symbol?: string;
 
-  @Column({ type: "boolean", default: true })
+  @Column({ name: "is_active", type: "boolean", default: true })
   isActive!: boolean;
 
   // 🔹 Unidad base (ej: G → KG)

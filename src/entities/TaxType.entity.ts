@@ -12,7 +12,7 @@ export class TaxType {
   @Column({ type: "varchar", length: 100 })
   description!: string;
 
-  @Column({ type: "boolean"})
+  @Column({ name: "is_active", type: "boolean" })
   isActive!: boolean
 
   @OneToMany(() => TaxDetailType, (detail) => detail.tax)

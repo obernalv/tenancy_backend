@@ -8,16 +8,16 @@ import { StockMovement } from "./StockMovement.entity.js";
 @Entity({ name: "warehouse" })
 export class Warehouse extends AuditBase {
   
-  @Column({ type: "varchar", length: 200 })
+  @Column({name: "warehouse_name", type: "varchar", length: 200 })
   warehouseName!: string;
 
-  @Column({ type: 'varchar', nullable: true })
+  @Column({ name: "location", type: 'varchar', nullable: true })
   location?: string;
 
-  @Column({type: 'boolean'})
+  @Column({ name: "is_main", type: 'boolean' })
   isMain!: boolean;
 
-  @Column({type: 'boolean'})
+  @Column({ name: "is_active", type: 'boolean' })
   isActive!: boolean
 
   @OneToMany(() => Stock, stock => stock.warehouse)

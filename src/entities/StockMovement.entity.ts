@@ -8,10 +8,12 @@ import { Warehouse } from "./WareHouse.entity.js";
 
 @Entity({ name: "stock_movement" })
 export class StockMovement extends AuditBase {
-  @Column({type: "date"})
-  dateMovement!: Date;
+
+  @Column({name: "date_movement", type: "date"})
+  date_movement!: Date;
 
   @Column({
+    name: "type_movement",
     type: "enum",
     enum: TypeMovementKardex,
     default: TypeMovementKardex.IN,
@@ -21,7 +23,7 @@ export class StockMovement extends AuditBase {
   @Column({ type: "decimal", precision: 9, scale: 4 })
   quantity!: number;
 
-  @Column({ type: "decimal", precision: 9, scale: 4 })
+  @Column({ name: "unit_cost", type: "decimal", precision: 9, scale: 4 })
   unitCost!: number;
 
   @Column({ type: "decimal", precision: 9, scale: 4 })

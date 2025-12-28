@@ -16,13 +16,13 @@ export class MovementReason {
   @Column({ type: "varchar", length: 150 })
   description!: string;
 
-  @Column({ type: "boolean", default: true })
+  @Column({ name: "is_for_kardex", type: "boolean", default: true })
   isForKardex!: boolean;
 
-  @Column({ type: "boolean", default: true })
+  @Column({ name: "is_for_guia", type: "boolean", default: true })
   isForGuia!: boolean;
 
-  @Column({ type: "boolean", default: true })
+  @Column({ name: "is_for_inventory_adjustment", type: "boolean", default: true })
   isForInventoryAdjustment!: boolean;
 
   @OneToMany(() => StockMovement, (stockMovement) => stockMovement.reason)

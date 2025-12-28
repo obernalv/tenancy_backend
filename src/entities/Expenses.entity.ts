@@ -5,7 +5,7 @@ import { AuditBase } from "./AuditBase.entity.js";
 @Entity({ name: "expenses" })
 export class Expense extends AuditBase {
 
-    @Column({type: 'date', nullable: false})
+    @Column({name: "expense_date", type: 'date', nullable: false})
     expenseDate!: Date;
 
     @Column({

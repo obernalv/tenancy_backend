@@ -17,16 +17,16 @@ import { Sale } from "./Sale.entity.js";
 export class DebitNote extends AuditBase{
 
   // Motivo general por se modifica(Intereses por mora)
-  @Column({ type: "varchar", length: 255 })
+  @Column({ name: "reason", type: "varchar", length: 255 })
   reason!: string; 
 
-  @Column({ type: "timestamp" })
+  @Column({ name: "issue_date", type: "timestamp" })
   issueDate!: Date;
 
-  @Column({ type: "varchar", length: 17 })
+  @Column({ name: "invoice_number", type: "varchar", length: 17 })
   invoiceNumber!: string;
 
-  @Column({ type: "varchar", length: 2, default: "01" })
+  @Column({ name: "modified_document_type", type: "varchar", length: 2, default: "01" })
   modifiedDocumentType!: string;
 
   // Sales

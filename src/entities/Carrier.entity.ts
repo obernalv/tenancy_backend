@@ -11,7 +11,8 @@ export class Carrier extends AuditBase{
 
     @Column({
         type: 'varchar',
-        length: 50
+        length: 50,
+        name: 'plate_number',
     })
     plateNumber!: string
     // Relacion con Guia es uno auno
